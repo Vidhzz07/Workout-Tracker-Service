@@ -1,6 +1,7 @@
 package com.workoutTracker.workout.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -21,15 +22,15 @@ public class SetData {
     @NonNull
     private String setType="NORMAL";
     @NonNull
-    private int setNo=1;
+    private Integer setNo=1;
     @NonNull
     private Double weight=0.0;
     @NonNull
-    private int reps=0;
+    private Integer reps=0;
 
     @ManyToOne
     @JoinColumn(name = "exercise_id")
-    @JsonIgnore
+    @JsonBackReference
     private Exercise exercise;
 
 

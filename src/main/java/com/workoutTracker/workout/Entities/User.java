@@ -1,6 +1,7 @@
 package com.workoutTracker.workout.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -50,6 +51,7 @@ public class User {
     private List<Integer> weight = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
+    @JsonManagedReference
     private List<Workout>workoutList;
 
 }

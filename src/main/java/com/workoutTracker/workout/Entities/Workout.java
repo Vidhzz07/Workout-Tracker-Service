@@ -1,6 +1,8 @@
 package com.workoutTracker.workout.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -50,10 +52,11 @@ public class Workout {
 
    @NonNull
    @OneToMany(mappedBy = "workout",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+   @JsonManagedReference
    private List<Exercise> exerciseList =new ArrayList<>();
 
    @ManyToOne
    @JoinColumn(name = "user_id")
-   @JsonIgnore
+   @JsonBackReference
    private User user;
 }

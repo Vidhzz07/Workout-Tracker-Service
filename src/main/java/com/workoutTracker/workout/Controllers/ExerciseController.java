@@ -25,7 +25,7 @@ public class ExerciseController {
 
     @PostMapping("/saveExercise")
     @ResponseStatus(HttpStatus.CREATED)
-    public Exercise saveExercise(@Valid Exercise exercise)
+    public Exercise saveExercise(@Valid @RequestBody Exercise exercise)
     {
         return exerciseService.saveExercise(exercise);
     }

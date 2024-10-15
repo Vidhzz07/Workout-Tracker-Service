@@ -1,5 +1,6 @@
 package com.workoutTracker.workout.Services;
 
+import com.workoutTracker.workout.Entities.SetData;
 import com.workoutTracker.workout.Repo.ExerciseRepo;
 import com.workoutTracker.workout.Entities.Exercise;
 import jakarta.persistence.EntityNotFoundException;
@@ -15,6 +16,9 @@ public class ExerciseService {
 
     public Exercise saveExercise(Exercise exercise)
     {
+        for(SetData set: exercise.getSetList())
+            set.setExercise(exercise);
+
        return  exerciseRepo.save(exercise);
     }
 

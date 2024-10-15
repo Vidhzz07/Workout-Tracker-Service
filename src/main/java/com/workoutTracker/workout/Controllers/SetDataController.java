@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/setData")
+@RequestMapping("/api/setData")
 public class SetDataController {
 
 
@@ -25,7 +25,7 @@ public class SetDataController {
 
     @PostMapping("/saveSetData")
     @ResponseStatus(HttpStatus.CREATED)
-    public SetData saveSetData(@Valid SetData setData)
+    public SetData saveSetData(@Valid @RequestBody SetData setData)
     {
         return setDataService.saveSet(setData);
     }
